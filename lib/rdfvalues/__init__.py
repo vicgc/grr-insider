@@ -21,3 +21,6 @@ from grr.lib.rdfvalues import stats
 from grr.lib.rdfvalues import structs
 from grr.lib.rdfvalues import volatility_types
 from grr.lib.rdfvalues import webhistory
+
+# insider threat extension
+from grr.lib.rdfvalues import insider

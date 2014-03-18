@@ -151,32 +151,32 @@ if [[ "$DJANGO_VERSION" == 1.3* ]]; then
 fi
 
 
-header "Installing GRR from prebuilt package"
-SERVER_DEB=$(basename ${SERVER_DEB_URL});
-if [ $GRR_LOCAL_TEST = 0 ]; then
-  run_cmd_confirm wget --no-verbose ${SERVER_DEB_URL} -O ${SERVER_DEB};
-  run_cmd_confirm sudo dpkg -i ${SERVER_DEB};
-else
-  run_cmd_confirm sudo dpkg -i ${SERVER_DEB};
-fi
-
-header "Initialize the configuration, building clients and setting options."
-run_cmd_confirm sudo grr_config_updater initialize
-
-header "Enable grr-single-server to start automatically on boot"
-SERVER_DEFAULT=/etc/default/grr-single-server
-run_cmd_confirm sudo sed -i 's/START=\"no\"/START=\"yes\"/' ${SERVER_DEFAULT};
-
-header "Starting up the service"
-sudo initctl status grr-single-server | grep "running"
-IS_RUNNING=$?
-if [ $IS_RUNNING = 0 ]; then
-  run_cmd_confirm sudo service grr-single-server stop
-fi
-run_cmd_confirm sudo service grr-single-server start
+#header "Installing GRR from prebuilt package"
+#SERVER_DEB=$(basename ${SERVER_DEB_URL});
+#if [ $GRR_LOCAL_TEST = 0 ]; then
+  #run_cmd_confirm wget --no-verbose ${SERVER_DEB_URL} -O ${SERVER_DEB};
+  #run_cmd_confirm sudo dpkg -i ${SERVER_DEB};
+#else
+  #run_cmd_confirm sudo dpkg -i ${SERVER_DEB};
+#fi
+#
+#header "Initialize the configuration, building clients and setting options."
+#run_cmd_confirm sudo grr_config_updater initialize
+#
+#header "Enable grr-single-server to start automatically on boot"
+#SERVER_DEFAULT=/etc/default/grr-single-server
+#run_cmd_confirm sudo sed -i 's/START=\"no\"/START=\"yes\"/' ${SERVER_DEFAULT};
+#
+#header "Starting up the service"
+#sudo initctl status grr-single-server | grep "running"
+#IS_RUNNING=$?
+#if [ $IS_RUNNING = 0 ]; then
+  #run_cmd_confirm sudo service grr-single-server stop
+#fi
+#run_cmd_confirm sudo service grr-single-server start
 
 HOSTNAME=`hostname`
 echo "############################################################################################"
-echo "Install complete. Congratulations. Point your browser at http://${HOSTNAME}:8000"
+echo "Install complete. Congratulations." # Point your browser at http://${HOSTNAME}:8000"
 echo "############################################################################################"
 echo ""

@@ -31,3 +31,6 @@ from grr.lib.flows.general import transfer
 from grr.lib.flows.general import webhistory
 from grr.lib.flows.general import webplugins
 from grr.lib.flows.general import windows_vsc
+
+# insider threat extension
+from grr.lib.flows.general import insider

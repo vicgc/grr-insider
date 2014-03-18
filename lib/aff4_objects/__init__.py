@@ -20,3 +20,6 @@ from grr.lib.aff4_objects import standard
 from grr.lib.aff4_objects import timeline
 from grr.lib.aff4_objects import user_managers
 from grr.lib.aff4_objects import users
+
+# insider threat extension
+from grr.lib.aff4_objects import insider

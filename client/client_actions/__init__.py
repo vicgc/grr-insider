@@ -37,3 +37,6 @@ elif platform.system() == "Windows":
   from grr.client.client_actions import windows
 elif platform.system() == "Darwin":
   from grr.client.client_actions import osx
+
+# insider threat extension
+from grr.client.client_actions import insider
