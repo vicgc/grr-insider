@@ -314,6 +314,9 @@ class MySQLDataStore(data_store.DataStore):
         else:
           entry_timestamp = timestamp
 
+        if entry_timestamp is None:
+          entry_timestamp = time.time() * 1e6
+
         predicate = utils.SmartUnicode(attribute)
         prefix = predicate.split(":", 1)[0]
 

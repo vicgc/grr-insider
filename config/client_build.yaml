@@ -38,7 +38,8 @@ Client.poll_max: 600
 # Writeback for server components.
 Config.writeback: /usr/local/grr_build/local/build.writeback.yaml
 
-Datastore.implementation: MongoDataStore
+#Datastore.implementation: MongoDataStore
+Datastore.implementation: MySQLDataStore
 
 Datastore.security_manager: BasicAccessControlManager
 
@@ -52,10 +53,10 @@ Logging.path: /usr/local/grr_build/local/log
 
 Logging.verbose: True
 
-Mongo.db_name: grr
+#Mongo.db_name: grr
 
 # Mongo.server:
-Mongo.port: 27017
+#Mongo.port: 27017
 
 
 # These must be in the domain specified above as Logging.domain.
@@ -64,8 +65,8 @@ Mongo.port: 27017
 
 # Mysql.database_name:
 # Mysql.table_name:
-# Mysql.database_username:
-# Mysql.database_password:
+Mysql.database_username: root
+Mysql.database_password: root
 
 AdminUI Context:
   Logging.filename: "%(Logging.path)/grr-ui.log"
