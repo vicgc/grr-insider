@@ -26,13 +26,16 @@ class InsiderInterrogate(flow.GRRFlow):
     fd = aff4.FACTORY.Create(self.state.urn, "InsiderStats",
             token=self.token)
     if responses.success:
-      stats = fd.Schema.STATS()
-      for response in responses:
-        stats.Append(response)
+      response = responses.First()
+      stats = fd.Schema.STATS(response)
+      self.SendReply(response)
     else:
       raise flow.FlowError("bulk_extractor sampling failed. Err: {0}".format(
           responses.status))
-    self.state.Register("stat_count", len(stats))
 
     fd.Set(stats)
     fd.Close()
+
+  @flow.StateHandler()
+  def End(self):
+    self.Notify("ViewObject", self.state.urn, "insider threat data collected")
