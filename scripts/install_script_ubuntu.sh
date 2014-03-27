@@ -125,9 +125,6 @@ header "Installing Sleuthkit and Pytsk"
 run_cmd_confirm sudo apt-get --yes remove libtsk3* sleuthkit
 run_cmd_confirm sudo dpkg -i ${DEB_DEPENDENCIES_DIR}/${SLEUTHKIT_DEB} ${DEB_DEPENDENCIES_DIR}/${PYTSK_DEB};
 
-header "Installing Mongodb"
-run_cmd_confirm sudo apt-get --yes --force-yes install mongodb python-pymongo;
-
 header "Getting correct psutil version (we require 0.6 or newer)"
 PSUTIL_VERSION=`dpkg-query -W python-psutil | cut -f 2`
 if [[ "$PSUTIL_VERSION" == 0.5* ]]; then
